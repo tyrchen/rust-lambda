@@ -21,9 +21,7 @@ async fn main() -> Result<(), Error> {
         .on_response(DefaultOnResponse::new().level(Level::INFO));
 
     let app = Router::new()
-        // `GET /` goes to `root`
         .route("/", get(root))
-        // `POST /users` goes to `create_user`
         .route("/users", post(create_user))
         .layer(layer);
 
@@ -51,14 +49,17 @@ async fn main() -> Result<(), Error> {
 
 // basic handler that responds with a static string
 async fn root() -> &'static str {
-    "Hello, World!"
+    #[cfg(debug_assertions)]
+    {
+        "This is from local!"
+    }
+    #[cfg(not(debug_assertions))]
+    {
+        "This is from lambda!"
+    }
 }
 
-async fn create_user(
-    // this argument tells axum to parse the request body
-    // as JSON into a `CreateUser` type
-    Json(payload): Json<CreateUser>,
-) -> (StatusCode, Json<User>) {
+async fn create_user(Json(payload): Json<CreateUser>) -> (StatusCode, Json<User>) {
     // insert your application logic here
     let user = User {
         id: 1337,

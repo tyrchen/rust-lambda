@@ -1,3 +1,0 @@
-name: rust-lambda
-runtime: nodejs
-description: Rust lambda POC infra
