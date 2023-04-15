@@ -1,0 +1,6 @@
+[default.extend-words]
+Referer = "Referer"
+
+[files]
+extend-exclude = ["*/fixtures/*", "README.md"]
+ignore-files = true

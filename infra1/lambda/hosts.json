@@ -1,0 +1,6 @@
+{
+  "/matrix/homescreen": "uapi.adrise.tv",
+  "/api/v1/homescreen": "tensor.production-public.tubi.io",
+  "/api/v2/homescreen": "tensor.production-public.tubi.io",
+  "/api/v3/homescreen": "tensor.production-public.tubi.io"
+}

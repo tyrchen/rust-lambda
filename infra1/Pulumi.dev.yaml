@@ -1,0 +1,7 @@
+config:
+  aws:region: us-west-2
+  # cert in us-east-1, allowing *.iostream.dev
+  rust-lambda:cf-cert-arn: arn:aws:acm:us-east-1:559464001980:certificate/d77c0860-359b-4493-a23d-7de6633880f8
+  rust-lambda:cf-lambda-header: X-Proxy-Secret
+  rust-lambda:cf-lambda-secret:
+    secure: AAABADb+SlK6Zf6plyEVawpoOxfWv4ERNpfmXzFdd52243aTjPOfnQPM6y5/5Xwuxod7lO2JsAA6gnPJwUbcDA==

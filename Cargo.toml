@@ -1,0 +1,22 @@
+[workspace]
+members = [
+  # binary
+  "api",
+]
+
+[workspace.dependencies]
+anyhow = "1.0.69"
+aws-config = "0.55.0"
+aws-sdk-s3 = "0.26.0"
+bytes = "1.4.0"
+http = "0.2.9"
+hyper = { version = "0.14.24", features = ["full"] }
+lambda_http = "0.8.0"
+lambda_runtime = "0.8.0"
+reqwest = { version = "0.11.14", default-features = false, features = ["rustls-tls", "json", "gzip", "brotli", "deflate"] }
+serde = { version = "1.0.153", features = ["derive"] }
+serde_json = "1.0.94"
+tokio = { version = "1.26.0", features = ["rt", "rt-multi-thread", "macros"] }
+tower-http = { version = "0.4.0", features = ["compression-full", "cors", "trace"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
