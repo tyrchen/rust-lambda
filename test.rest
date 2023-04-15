@@ -1,0 +1,10 @@
+### GET
+GET https://www.sigma.city
+
+### POST
+POST https://www.sigma.city/users
+Content-Type: application/json
+
+{
+  "username": "tyr"
+}

@@ -25,7 +25,7 @@ const cdnLogs = new aws.s3.BucketV2("lambda-logs", {
 
 
 const cachePolicy = new aws.cloudfront.CachePolicy("cella-cclr-cdn-cache-policy", {
-  defaultTtl: 0,
+  defaultTtl: 120,
   maxTtl: 86400,
   minTtl: 0,
   parametersInCacheKeyAndForwardedToOrigin: {
@@ -89,6 +89,10 @@ const cdn = new aws.cloudfront.Distribution("lambda-cdn", {
     viewerProtocolPolicy: "redirect-to-https",
     allowedMethods: [
       "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE",
       "HEAD",
       "OPTIONS",
     ],
