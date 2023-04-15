@@ -34,7 +34,6 @@ const apiPolicy = new aws.iam.RolePolicy("api-lambda-role-policy", {
   }
 });
 
-let hostRules = fs.readFileSync("lambda/hosts.json", "utf8");
 // create lambda functions
 const apiLambda = createLambda("lambda-api", apiRole, apiPolicy, {});
 

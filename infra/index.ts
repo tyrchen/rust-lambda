@@ -1,8 +1,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import { api } from "./api";
-import { bucket } from "./shared";
-import * as test from "./test";
+// import { bucket } from "./shared";
+// import * as test from "./test";
 
 
 const cdnLogs = new aws.s3.BucketV2("lambda-logs", {
@@ -67,22 +67,7 @@ const cfg = new pulumi.Config();
 let apiDomain = api.url.apply(url => url.replace("https://", "").replace("/", ""));
 const cdn = new aws.cloudfront.Distribution("lambda-cdn", {
   enabled: true,
-  aliases: ["*.iostream.app"], // this should be ["*.production-public.tubi.io", "uapi.adrise.tv"] for production
-  originGroups: [{
-    originId: "lambda-origin-group",
-    failoverCriteria: {
-      statusCodes: [
-        502,
-        503,
-        504
-      ],
-    },
-    members: [
-      {
-        originId: "api",
-      },
-    ],
-  }],
+  aliases: ["*.sigma.city"],
   origins: [{
     originId: "api",
     domainName: apiDomain,
@@ -99,7 +84,7 @@ const cdn = new aws.cloudfront.Distribution("lambda-cdn", {
   }],
 
   defaultCacheBehavior: {
-    targetOriginId: "lambda-origin-group",
+    targetOriginId: "api",
     compress: true,
     viewerProtocolPolicy: "redirect-to-https",
     allowedMethods: [
@@ -144,11 +129,11 @@ const cdn = new aws.cloudfront.Distribution("lambda-cdn", {
 });
 
 // Exports
-export const bucketName = bucket.id;
+// export const bucketName = bucket.id;
 export const cndLogName = cdnLogs.id;
 export const cdnDomainName = cdn.domainName;
 export const lambdaApiUrl = api.url;
 
 // export test assets
-export const testBucketName = test.testBucket.id;
-export const testUser = test.testUser;
+// export const testBucketName = test.testBucket.id;
+// export const testUser = test.testUser;

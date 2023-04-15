@@ -1,0 +1,6 @@
+config:
+  aws:region: us-west-2
+  lambda:cf-cert-arn: arn:aws:acm:us-east-1:559464001980:certificate/5c524976-b917-442a-a08e-67eca9736488
+  lambda:cf-lambda-header: X-Proxy-Secret
+  lambda:cf-lambda-secret:
+    secure: AAABAHkfcG5jZIRN3Wrl634CeJ06LWWXLSDgbIv8tCLajerditfbHmC9logo2fTQU/W/MHxLQmZ6ZgU3J5WZfg==
